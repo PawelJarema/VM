@@ -1,0 +1,21 @@
+%h2 Create New Movie
+
+= form_tag movies_path, :method => :post do  -#form_tag method takes in the URI
+                                             -#(helper meth) and http method as
+                                             -#in info. disp. by 'rake routes'
+-# these specifications will determine the controller receiving input from form
+-# (here it's the 'create' action
+
+= label :movie, :title, 'Title'
+= text_field :movie, :title
+
+= label :movie, :rating, 'Rating'
+= select :movie, :rating, ['G','PG-13','R','NC-17']
+
+= label :movie, :release_date, 'Released On'
+= date_select :movie, :release_date
+
+= submit_tag 'Save Changes'
+
+- # note: when the form is submitted, the controller can inspect the params[]
+- # hash that will carry the data to the controller actions/next view
